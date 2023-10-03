@@ -1,0 +1,38 @@
+.bucketitem{
+    position: relative;
+    display: flex; align-items: center;
+    padding: 12px 0;
+
+    .checkcircle{
+        display: flex; align-items: center; justify-content: center;
+        width: 32px; height: 32px;
+        border-radius: 16px; margin-right: 20px;
+        border: 1px solid #ced4da;
+        font-size: 24px; cursor: pointer;
+
+        & > *{ color: #0593d3; display: none; }
+        &.active{ 
+            border-color: #0593d3; 
+            & > *{ display: block; }
+        }
+        &.active + p{ color: #0593d3; text-decoration: line-through; }
+    }
+
+    p{
+        font-size: 21px; color: #495057;
+    }
+
+    .remove{
+        position: absolute; right: 0;
+        transform: translateY(-50%,50%);
+        color: #dee2e6; font-size: 24px;
+        cursor: pointer;
+        
+        display: none; /* 안보이게 처리 */
+
+        &:hover{ color: #ff6b6b; }
+    }
+
+    /* 리스트에 마우스 올리면 휴지통 아이콘 보이게 처리 */
+    &:hover .remove{ display: block; }
+}
