@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../sass/bucketheader.scss";
 import { useBucketState } from "../BucketContext";
 
@@ -24,13 +24,24 @@ function BucketHeader() {
   //체크되지 않은 것만 재할당
   const falseChks = buckets.filter(bucket => !bucket.chk);
 
-  return (
+  const [userName, setUserName] = useState(""); // 사용자 이름을 저장할 상태
+
+  // 사용자 이름 입력 받기
+  const InputUserName = () => {
+    const userInput = prompt("사용자 이름을 입력하세요:");
+    if (userInput) {
+      setUserName(userInput);
+    }
+  };
+
+ return (
     <div className="bucketheader">
-      <h1>My Bucket List</h1>
+      <h1>{userName ? `${userName}님의` : "My"} Bucket List</h1>
       <h2>
         현재 : {year}년 {month}월 {date}일 {week[day]}요일
       </h2>
-      <p>할일 {falseChks.length}개 남음</p>
+      <p>{userName}님의 할 일 {falseChks.length}개 남음</p>
+      <button onClick={InputUserName}>사용자 이름 설정</button>
     </div>
   );
 }
