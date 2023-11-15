@@ -40,7 +40,7 @@ function BucketHeader() {
       <h2>
         현재 : {year}년 {month}월 {date}일 {week[day]}요일
       </h2>
-      <p>{userName}님의 할 일 {falseChks.length}개 남음</p>
+      <p>{userName ? `${userName}님의` : ""} 할 일 {falseChks.length}개 남음</p>
       <button onClick={InputUserName}>사용자 이름 설정</button>
     </div>
   );
